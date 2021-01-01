@@ -1,5 +1,4 @@
 const express = require("express");
-const coin = require("../models/coin");
 const router = express.Router();
 const CoinSchema = require("../models/coin");
 module.exports = router.get("/", async (req, res, next) => {
