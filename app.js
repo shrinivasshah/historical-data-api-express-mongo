@@ -49,7 +49,7 @@ con.on("open", () => {
 
 app.use("/coins", mainRouter);
 
-app.listen(9000, () => {
+app.listen(process.env.port || 9000, () => {
   console.log("Server started successfully on\n  http://localhost:9000");
 });
 
