@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const url = "mongodb://localhost/hystorical_data";
+const url = `mongodb+srv://pocketbits:${process.env.PASSWORD}@historical.x9ji0.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 mongoose.connect(url, { useNewUrlParser: true });
 const con = mongoose.connection;
 
@@ -49,7 +49,7 @@ con.on("open", () => {
 
 app.use("/coins", mainRouter);
 
-app.listen(9000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started successfully on\n  http://localhost:9000");
 });
 
