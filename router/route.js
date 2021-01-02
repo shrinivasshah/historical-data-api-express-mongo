@@ -1,5 +1,5 @@
 const express = require("express");
-const moment = require("moment");
+// const moment = require("moment");
 const router = express.Router();
 const CoinSchema = require("../models/coin");
 module.exports = router.get("/", async (req, res, next) => {
@@ -41,7 +41,7 @@ module.exports = router.get("/:name", async (req, res) => {
         // console.log(item);
         // coinName.push({ name: item.name, buy: item.buy, time: item.time });
         coinName["buy"].push(item.buy);
-        coinName["time"].push(moment.utc(item.time).locale());
+        coinName["time"].push(item.time);
       }
     });
     res.send(coinName);
