@@ -40,10 +40,10 @@ module.exports = router.get("/:name", async (req, res) => {
         // console.log(item);
         // coinName.push({ name: item.name, buy: item.buy, time: item.time });
         coinName["buy"].push(item.buy);
-        coinName["time"].push(new Date(item.time).toString().slice(15, 24));
+        coinName["time"].push(new Date(item.time).toString().slice(16, 24));
       }
     });
-    res.send(coinName);
+    console.log(coinName.time.slice(-1));
     // console.log(coinName);
   } catch (error) {
     console.log(error);
