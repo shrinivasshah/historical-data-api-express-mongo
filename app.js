@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config({ path: __dirname + "/.env" });
+// require("dotenv").config({ path: __dirname + "/.env" });
 const axios = require("axios");
 const cron = require("node-cron");
 const mongoose = require("mongoose");
