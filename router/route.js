@@ -43,7 +43,7 @@ module.exports = router.get("/:name", async (req, res) => {
         coinName["time"].push(new Date(item.time).toString().slice(16, 24));
       }
     });
-    console.log(coinName.time.slice(-1));
+    res.send(coinName);
     // console.log(coinName);
   } catch (error) {
     console.log(error);
