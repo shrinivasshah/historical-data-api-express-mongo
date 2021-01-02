@@ -41,10 +41,10 @@ module.exports = router.get("/:name", async (req, res) => {
         // console.log(item);
         // coinName.push({ name: item.name, buy: item.buy, time: item.time });
         coinName["buy"].push(item.buy);
-        coinName["time"].push(moment.utc(item.time).locale("in").toString());
+        coinName["time"].push(moment.utc(item.time).locale());
       }
     });
-    console.log(coinName);
+    res.send(coinName);
     // console.log(coinName);
   } catch (error) {
     console.log(error);
