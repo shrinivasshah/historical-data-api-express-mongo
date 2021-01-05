@@ -1,4 +1,5 @@
 node_modules
-.serverless.yml
+serverless
 Procfile
 *.pem
+.gitignore

@@ -9,8 +9,8 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());
-
-const url = `mongodb+srv://pbadmin:Sa9987333@historicaldata.f6qt0.mongodb.net/historicaldata?retryWrites=true&w=majority`;
+const url = "mongodb://host.docker.internal:27017/hystorical_data";
+// const url = `mongodb+srv://pbadmin:Sa9987333@historicaldata.f6qt0.mongodb.net/historicaldata?retryWrites=true&w=majority`;
 // const url = "mongodb://localhost/hystorical_data";
 mongoose.connect(url, { useNewUrlParser: true });
 const con = mongoose.connection;
