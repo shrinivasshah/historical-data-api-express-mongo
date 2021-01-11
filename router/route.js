@@ -1,4 +1,5 @@
 const express = require("express");
+
 // const moment = require("moment");
 const router = express.Router();
 const CoinSchema = require("../models/coin");
@@ -29,7 +30,9 @@ module.exports = router.get("/:name", async (req, res) => {
   const coinName = { buy: [], time: [] };
   //   console.log(coinName);
   try {
-    const coins = await CoinSchema.find();
+    const coins = await CoinSchema.find({ name: req.params.name })
+      .sort({ time: -1 })
+      .limit(1440);
     // for (let i of coins) {
     //   if (i["name"] === req.params.name) {
     //     coinName.push(i);
@@ -37,15 +40,14 @@ module.exports = router.get("/:name", async (req, res) => {
     //   //   console.log(coinName);
     // }
     coins.forEach((item) => {
-      if (item["name"] === req.params.name) {
-        // console.log(item);
-        // coinName.push({ name: item.name, buy: item.buy, time: item.time });
-        coinName["buy"].push(item.buy);
-        coinName["time"].push(item.time);
-      }
+      // console.log(item);
+      // coinName.push({ name: item.name, buy: item.buy, time: item.time });
+      coinName["buy"].push(item.buy);
+      coinName["time"].push(item.time);
     });
+
     res.send(coinName);
-    // console.log(coinName);
+    // console.log(coinName.buy.length);
   } catch (error) {
     console.log(error);
   }
