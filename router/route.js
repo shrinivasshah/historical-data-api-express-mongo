@@ -1,16 +1,17 @@
 const express = require("express");
-
+const moment = require("moment");
 // const moment = require("moment");
 const router = express.Router();
 const CoinSchema = require("../models/coin");
-module.exports = router.get("/", async (req, res, next) => {
-  try {
-    const coins = await CoinSchema.find();
-    res.json(coins);
-  } catch (err) {
-    res.send("Err" + err);
-  }
-});
+
+// module.exports = router.get("/", async (req, res, next) => {
+//   try {
+//     const coins = await CoinSchema.find();
+//     res.json(coins);
+//   } catch (err) {
+//     res.send("Err" + err);
+//   }
+// });
 
 // module.exports = router.post("/", async (req, res) => {
 //   const coins = new CoinSchema({
@@ -43,7 +44,7 @@ module.exports = router.get("/:name", async (req, res) => {
       // console.log(item);
       // coinName.push({ name: item.name, buy: item.buy, time: item.time });
       coinName["buy"].push(item.buy);
-      coinName["time"].push(item.time);
+      coinName["time"].push(moment.utc(item.time).local().toString());
     });
 
     res.send(coinName);
